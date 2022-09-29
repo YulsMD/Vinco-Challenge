@@ -1,8 +1,8 @@
 const axios = require("axios");
 
-const { Champ } = require("../db.js");
+const { Champ } = require("../../db.js");
 
-async function getChamps() {
+async function getAPIChamps() {
   const getData = (
     await axios(
       "https://ddragon.leagueoflegends.com/cdn/12.13.1/data/en_US/champion.json"
@@ -21,12 +21,25 @@ async function getChamps() {
       defense: e.info.defense,
       magic: e.info.magic,
       difficulty: e.info.difficulty,
-      image: `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${e.id}_0.jpg`
+      image: `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${e.id}_0.jpg`,
+      createdByMe:false
     };
   });
   return response;
 }
 
+async function getDBChamps(){
+ const  DBChamps = await Champ.findAll()
+ return DBChamps
+}
+
+async function getAllChamps(){
+  const DB_Champs = await getDBChamps();
+  const API_Champs = await getAPIChamps();
+  const allChamps = API_Champs.concat(DB_Champs);
+  return allChamps
+}
+
 module.exports = {
-  getChamps,
+  getAllChamps
 };

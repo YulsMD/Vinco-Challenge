@@ -2,18 +2,17 @@ const axios = require("axios");
 const express = require("express");
 const router = express.Router();
 const { Champ } = require("../db.js");
-const { getChamps } = require("./controller.js");
+const { getAllChamps } = require("./controller/index.js");
 
 //GET CHAMPS
 router.get("/", async (req, res, next) => {
-  const allChamps = await getChamps();
+  let allChamps = await getAllChamps();
   try {
     res.status(200).json(allChamps);
   } catch (error) {
     next(error);
   }
 });
-
 
 //POST NEW CHAMP
 router.post("/create", async (req, res, next) => {
@@ -34,10 +33,34 @@ router.post("/create", async (req, res, next) => {
         image ||
         "https://www.masgamers.com/wp-content/uploads/2021/10/jinx-league-of-legends.jpg",
     });
-    res.status(200).json(newChamp);
+    res.status(200).json("success");
   } catch (error) {
     next(error);
   }
 });
 
+//UPDATE A CHAMP
+router.put("/update/:id", async (req, res, next) =>{
+  const id = req.params.id;
+  try {
+    const champ = await Champ.findOne({where: {id:id}});
+    champ.blurb = req.body.blurb
+    await champ.save()
+    res.json("update")
+    
+  } catch (error) {
+    next(error);
+  }
+})
+
+//DELETE A CHAMP
+router.delete("/delete/:id", async (req, res, next) => {
+  const id = req.params.id;
+  try {
+    await Champ.destroy({where: {id: id}});
+    res.json("remove")
+  } catch (error) {
+    next(error);
+  }
+})
 module.exports = router;
