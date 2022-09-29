@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const sequelize = new Sequelize({
     dialect: 'sqlite',
-    storage: '../../champs.db'
+    host: '../../champs.sqlite'
   });
 
   const basename = path.basename(__filename);

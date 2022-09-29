@@ -9,7 +9,7 @@ async function getChamps() {
     )
   ).data.data;
 
-  const arrayData = Object.values(getData)
+  const arrayData = Object.values(getData);
 
   const response = await arrayData.map((e) => {
     return {
@@ -17,18 +17,16 @@ async function getChamps() {
       name: e.name,
       title: e.title,
       blurb: e.blurb,
-      info: {
-        attack: e.info.attack,
-        defense: e.info.defense,
-        magic: e.info.magic,
-        difficulty: e.info.difficulty,
-      },
-      image: e.image
+      attack: e.info.attack,
+      defense: e.info.defense,
+      magic: e.info.magic,
+      difficulty: e.info.difficulty,
+      image: `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${e.id}_0.jpg`
     };
   });
   return response;
 }
 
 module.exports = {
-  getChamps
-}
+  getChamps,
+};

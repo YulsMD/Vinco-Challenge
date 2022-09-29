@@ -7,17 +7,27 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false
       },
-      height: {
+      title: {
         type: DataTypes.STRING,
         allowNull: false
       },
-      weight: {
-        type: DataTypes.STRING,
-        allowNull: false
+      blurb: {
+        type: DataTypes.STRING
       },
-      life_span: {
+      attack: {
         type: DataTypes.STRING,
         allowNull:false
+      },
+      defense: {
+        type: DataTypes.STRING,
+        allowNull:false
+      },
+      magic: {
+        type: DataTypes.STRING,
+        allowNull:false
+      },
+      difficulty: {
+        type: DataTypes.STRING
       },
       image : {
         type: DataTypes.STRING
