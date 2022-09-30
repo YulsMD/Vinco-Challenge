@@ -17,10 +17,25 @@ export default function ChampCard({
       <div className="card">
         <div className="card2">
         <div>
-          <h3>{name}</h3>
+          <img className="img__card" src={image} alt="Champ"/>
         </div>
         <div>
-          <img src={image} alt="Dog" width="200" height="200" />
+          <h3 className="h3__name">{name}</h3>
+          <div className="title__champ">{title}</div>
+        </div>
+        <div className="container__habilities">
+          <div>
+            <div className="title__hability">Atacck</div>
+            <div className="type__hability">{attack}</div>
+          </div>
+          <div>
+            <div className="title__hability">Defense</div>
+            <div className="type__hability">{defense}</div>
+          </div>
+          <div>
+            <div className="title__hability">Magic</div>
+            <div className="type__hability">{magic}</div>
+          </div>
         </div>
         </div>
       </div>

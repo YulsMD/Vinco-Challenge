@@ -7,10 +7,10 @@
 
   /*========== COLORS ==========*/
   --black: #000000;
-	--bg-gradient: repeating-linear-gradient(180deg, #0fa7c2 0%, #000000);;
-	--blue: #0fa7c2;
+	--bg-gradient: repeating-linear-gradient(180deg, #0fa7c2 0%, #000000);
+	--blue: #0c333a;
 	--blue-light: #37ffe4;
-	--white: #fefcff;
+	--purple: #a7b0ff;
 	--yellow: #C89B3C;
 
   /*========== Font and typography ==========*/
@@ -79,10 +79,20 @@ input,
 textarea {
   font-family: var(--body-font);
 }
+body {
+  background: var(--blue);
+  background: linear-gradient(181deg, var(--blue) 0%, var(--black) 100%);
+}
 
 h1,
 h2 {
   font-family: var(--title-font);
+  color: var(--yellow);
+}
+
+h3 {
+  font-family: var(--title-body);
+  font-size: var(--h2-font-size);
   color: var(--yellow);
 }
 
