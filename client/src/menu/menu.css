@@ -1,0 +1,18 @@
+.container__menu {
+  background: var(--black);
+}
+
+.nav__menu {
+  width: 100%;
+  display: flex;
+}
+.nav__list {
+  display: flex;
+  width: 100%;
+  gap: 2rem;
+  justify-content: flex-end;
+  font-size: var(--h3-font-size);
+  color: var(--yellow);
+  padding-right: 3rem;
+  padding-bottom: 0.5rem;
+}
