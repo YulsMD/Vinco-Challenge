@@ -86,12 +86,6 @@ h2 {
   color: var(--yellow);
 }
 
-body {
-  height: 100%;
-  background: var(--blue);
-  background: linear-gradient(181deg, var(--blue-light) 0%, var(--black) 100%);
-}
-
 ul {
   list-style: none;
 }

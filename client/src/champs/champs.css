@@ -1,0 +1,10 @@
+.container__champs {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: 5rem;
+  background: var(--blue);
+  background: linear-gradient(181deg, var(--blue-light) 0%, var(--black) 100%);
+  padding: 3rem;
+  justify-content: center;
+}

@@ -14,6 +14,7 @@ async function getAPIChamps() {
   const response = await arrayData.map((e) => {
     return {
       id: e.id,
+      key: e.key,
       name: e.name,
       title: e.title,
       blurb: e.blurb,
