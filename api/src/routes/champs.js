@@ -2,7 +2,7 @@ const axios = require("axios");
 const express = require("express");
 const router = express.Router();
 const { Champ } = require("../db.js");
-const { getAllChamps } = require("./controller/index.js");
+const { getAllChamps, getChampDetails } = require("./controller/index.js");
 
 //GET CHAMPS
 router.get("/", async (req, res, next) => {
@@ -13,6 +13,16 @@ router.get("/", async (req, res, next) => {
     next(error);
   }
 });
+
+router.get('/:id', async (req, res, next) => {
+  const {id} = req.params
+  try {
+    let champDetail = await getChampDetails(id)
+    res.status(200).json(champDetail);
+  } catch (error) {
+    next(error);
+  }
+})
 
 //POST NEW CHAMP
 router.post("/create", async (req, res, next) => {

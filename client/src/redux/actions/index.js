@@ -20,3 +20,17 @@ export const filterChamps = (payload) => {
     payload
   }
 }
+
+export const getChampDetails = (id) =>{
+  return async function(dispatch) {
+    try {
+      const res = await axios.get(`http://localhost:3001/champs/${id}`)
+      return dispatch({
+        type: 'GET_CHAMP_DETAILS',
+        payload: res.data
+      })
+    } catch (error) {
+      alert('Champ not found')
+    }
+  }
+}

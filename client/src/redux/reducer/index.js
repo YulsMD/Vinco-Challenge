@@ -35,6 +35,12 @@ const rootReducer = (state = initialState, action) => {
         champs: filtered,
       };
       
+    case 'GET_CHAMP_DETAILS':
+      console.log(action.payload, 'action')
+      return{
+        ...state,
+        details: action.payload
+      }
     default:
       return { ...state };
   }

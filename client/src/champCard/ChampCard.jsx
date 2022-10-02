@@ -1,5 +1,6 @@
 import React from "react";
 import './champCard.css'
+import { Link } from 'react-router-dom'
 
 export default function ChampCard({
   id,
@@ -11,6 +12,7 @@ export default function ChampCard({
   return (
     <>
       <div className="card">
+        <Link to={`/champs/${id}`}>
         <div className="card2">
         <div>
           <img className="img__card" src={image} alt="Champ"/>
@@ -36,6 +38,7 @@ export default function ChampCard({
           </div>
         </div>
         </div>
+        </Link>
       </div>
     </>
   );

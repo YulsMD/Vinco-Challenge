@@ -37,6 +37,21 @@ async function getAllChamps(){
   return allChamps
 }
 
+async function getChampDetails(id){
+    const details = (await axios(`https://ddragon.leagueoflegends.com/cdn/12.13.1/data/en_US/champion/${id}.json`)).data.data
+    const champDetails = Object.values(details);
+    const mapped = champDetails.map( e => {return{
+      id: e.id,
+      key: e.key,
+      name: e.name,
+      title: e.title,
+      tags: e.tags,
+      lore: e.lore,
+      image: `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${e.id}_0.jpg`
+    }})
+  return mapped
+  
+}
 module.exports = {
-  getAllChamps
+  getAllChamps, getChampDetails
 };
