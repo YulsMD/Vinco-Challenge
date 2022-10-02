@@ -1,19 +1,43 @@
 const initialState = {
-    champs: [],
-    allChamps: [],
-    details: []
-}
+  champs: [],
+  allChamps: [],
+  details: [],
+  tags: [],
+};
 
-const rootReducer = (state = initialState, action) =>{
-  switch(action.type){
-    case 'GET_ALL_CHAMPS':
+const rootReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "GET_ALL_CHAMPS":
       return {
         ...state,
         champs: action.payload,
-        allChamps: action.payload
-      }
-    default: return {...state}
-  }
-}
+        allChamps: action.payload,
+        tags: [
+          "All",
+          ...new Set(
+            Object.values(action.payload)
+              .map((el) => el.tags)
+              .flat(1)
+          ),
+        ],
+      };
 
-export default rootReducer
+    case "FILTER_CHAMPS":
+      const champs = state.allChamps;
+      if (action.payload === "All")
+        return {
+          ...state,
+          champs: champs,
+        };
+      const filtered = champs.filter((e) => e.tags.includes(action.payload));
+      return {
+        ...state,
+        champs: filtered,
+      };
+      
+    default:
+      return { ...state };
+  }
+};
+
+export default rootReducer;

@@ -13,3 +13,10 @@ export const getAllChamps = () => {
     }
   } 
 }
+
+export const filterChamps = (payload) => {
+  return {
+    type: 'FILTER_CHAMPS',
+    payload
+  }
+}

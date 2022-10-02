@@ -5,9 +5,9 @@ export default function Header() {
   return (
     <header className="header">
       <nav className="nav container">
-        <a href="index.html" className="nav__logo">
+        <div  className="nav__logo">
           League of Champs
-        </a>
+        </div>
       </nav>
     </header>
   );

@@ -17,11 +17,7 @@ async function getAPIChamps() {
       key: e.key,
       name: e.name,
       title: e.title,
-      blurb: e.blurb,
-      attack: e.info.attack,
-      defense: e.info.defense,
-      magic: e.info.magic,
-      difficulty: e.info.difficulty,
+      tags: e.tags,
       image: `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${e.id}_0.jpg`,
       createdByMe:false
     };

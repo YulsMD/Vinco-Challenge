@@ -59,4 +59,5 @@
   color: var(--purple);
   display: flex;
   justify-content: center;
+  gap: 1rem;
 }

@@ -14,14 +14,9 @@ export default function Champs() {
       id = {champ.id}
       name = {champ.name}
       title = {champ.title}
-      blurb = {champ.blurb}
-      attack = {champ.attack}
-      magic = {champ.magic}
-      defense = {champ.defense}
-      difficulty = {champ.difficulty}
       image = {champ.image}
+      tags={champ.tags}
       />
-      
     })}
   </div>);
 }
