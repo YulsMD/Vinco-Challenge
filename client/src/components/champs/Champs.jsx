@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import ChampCard from "../champCard/ChampCard";
 import "./champs.css";
 
+/* A function that uses the useSelector hook to get the champs from the redux store. It is then mapping over the champs and
+returning a ChampCard component for each champ. */
 export default function Champs() {
 
   const champs = useSelector(state=>state.champs)
@@ -16,6 +18,7 @@ export default function Champs() {
       title = {champ.title}
       image = {champ.image}
       tags={champ.tags}
+      createdByMe={champ.createdByMe}
       />
     })}
   </div>);

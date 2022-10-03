@@ -103,5 +103,10 @@ img {
   height: auto;
 }
 
+label {
+  font-size: var(--normal-font-size);
+  color: var(--blue-light);
+}
+
 /*=============== BREAKPOINTS ===============*/
 /*========== For large devices ==========*/

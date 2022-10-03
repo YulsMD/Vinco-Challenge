@@ -10,6 +10,7 @@ const server = express();
 
 server.name = 'API';
 
+/* Allowing the server to accept requests from the client. */
 server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 server.use(bodyParser.json({ limit: '50mb' }));
 server.use(cookieParser());

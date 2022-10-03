@@ -1,0 +1,13 @@
+.container__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.data__input{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}

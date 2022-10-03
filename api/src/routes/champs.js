@@ -1,10 +1,11 @@
 const axios = require("axios");
 const express = require("express");
 const router = express.Router();
-const { Champ } = require("../db.js");
-const { getAllChamps, getChampDetails } = require("./controller/index.js");
+const { Champ, Tags } = require("../db.js");
+const { getAllChamps, getChampDetails, getChampDetails_DB } = require("./controller/index.js");
 
-//GET CHAMPS
+
+/* A route that is going to get all the champs from the database. */
 router.get("/", async (req, res, next) => {
   let allChamps = await getAllChamps();
   try {
@@ -14,31 +15,37 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+/* A route that is going to get the details of a champ from the database. */
 router.get('/:id', async (req, res, next) => {
   const {id} = req.params
+  console.log(isNaN(id))
   try {
-    let champDetail = await getChampDetails(id)
-    res.status(200).json(champDetail);
+    if(isNaN(id)=== true){
+      let champDetail = await getChampDetails(id)
+      res.status(200).json(champDetail);
+    } else{
+      console.log('estamos')
+      let champDetailDB = await getChampDetails_DB(id)
+      res.status(200).json(champDetailDB);
+    }
   } catch (error) {
     next(error);
   }
 })
 
-//POST NEW CHAMP
+
+/* Creating a new champ in the database. */
 router.post("/create", async (req, res, next) => {
-  const { name, title, blurb, attack, defense, magic, difficulty, image } =
+  const { name, title, lore, tags, image } =
     req.body;
-  if ((!name, !title, !attack, !defense, !magic, !difficulty))
+  if ((!name, !title, !lore, !tags))
     res.status(400).json("Missing Parameters");
   try {
     const newChamp = await Champ.create({
       name,
       title,
-      blurb,
-      attack,
-      defense,
-      magic,
-      difficulty,
+      lore,
+      tags: tags.toString(),
       image:
         image ||
         "https://www.masgamers.com/wp-content/uploads/2021/10/jinx-league-of-legends.jpg",
@@ -49,7 +56,8 @@ router.post("/create", async (req, res, next) => {
   }
 });
 
-//UPDATE A CHAMP
+
+/* Updating the blurb of a champ. */
 router.put("/update/:id", async (req, res, next) =>{
   const id = req.params.id;
   try {
@@ -63,7 +71,8 @@ router.put("/update/:id", async (req, res, next) =>{
   }
 })
 
-//DELETE A CHAMP
+
+/* Deleting a champ from the database. */
 router.delete("/delete/:id", async (req, res, next) => {
   const id = req.params.id;
   try {

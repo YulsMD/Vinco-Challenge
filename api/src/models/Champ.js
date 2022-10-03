@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-    // defino el modelo
+    // Define the model
     sequelize.define('champ', {
       name: {
         type: DataTypes.STRING,
@@ -11,23 +11,12 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false
       },
-      blurb: {
+      lore: {
         type: DataTypes.STRING
       },
-      attack: {
+      tags: {
         type: DataTypes.STRING,
         allowNull:false
-      },
-      defense: {
-        type: DataTypes.STRING,
-        allowNull:false
-      },
-      magic: {
-        type: DataTypes.STRING,
-        allowNull:false
-      },
-      difficulty: {
-        type: DataTypes.STRING
       },
       image : {
         type: DataTypes.STRING

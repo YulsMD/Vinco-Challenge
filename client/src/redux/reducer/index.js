@@ -7,6 +7,7 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
+    /* Getting all the champions from the database and setting the state. */
     case "GET_ALL_CHAMPS":
       return {
         ...state,
@@ -22,19 +23,29 @@ const rootReducer = (state = initialState, action) => {
         ],
       };
 
+    /* Filtering the champions based on the tags. */
     case "FILTER_CHAMPS":
       const champs = state.allChamps;
-      if (action.payload === "All")
+      if (action.payload === "All"){
         return {
           ...state,
           champs: champs,
-        };
-      const filtered = champs.filter((e) => e.tags.includes(action.payload));
-      return {
-        ...state,
-        champs: filtered,
-      };
+        };}else if(action.payload === 'Editable'){
+          let filtered = champs.filter((e) => e.createdByMe=== true)
+          return {
+            ...state,
+            champs: filtered,
+          };
+        } else{
+          let filtered = champs.filter((e) => e.tags.includes(action.payload));
+          return {
+            ...state,
+            champs: filtered,
+          };
+        }
       
+      
+    /* Getting the details of the champion. */
     case 'GET_CHAMP_DETAILS':
       console.log(action.payload, 'action')
       return{

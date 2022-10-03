@@ -2,12 +2,17 @@ import React from "react";
 import './champCard.css'
 import { Link } from 'react-router-dom'
 
+/**
+ * It's a function that returns a div with a link to a page with the id of the champ, and inside the
+ * div there's another div with an image, a name, a title, and a list of tags.
+ */
 export default function ChampCard({
   id,
   name,
   title,
   image,
-  tags
+  tags,
+  createdByMe
 }) {
   return (
     <>
