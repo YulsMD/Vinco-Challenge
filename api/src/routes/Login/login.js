@@ -4,7 +4,7 @@ const { User } = require("../../db.js");
 const bcrypt = require("bcrypt");
 const Token = require("../../utils/generateToken");
 
-/* A post request to login. */
+/* A post request to login. This end point, was not implemented in front end. */
 router.post("/", async (req, res, next) => {
   const { password, email } = req.body;
   try {

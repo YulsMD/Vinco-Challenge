@@ -3,7 +3,7 @@ const router = express.Router();
 const { User } = require("../db.js");
 const bcrypt = require('bcrypt')
 
-/* Creating a new user. */
+/* Creating a new user.  This end point, was not implemented in front end. */
 router.post("/create", async (req, res, next) => {
   const { name, password, email } = req.body;
   try {
