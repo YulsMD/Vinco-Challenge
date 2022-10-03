@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Header from "../header/Header";
-import { getChampDetails } from "../../redux/actions";
+import { deleteChamp, getChampDetails } from "../../redux/actions";
 import "./champDetails.css";
 
 /**
@@ -19,11 +19,19 @@ import "./champDetails.css";
 export default function ChampDetails() {
   const dispatch = useDispatch();
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getChampDetails(id));
   }, [dispatch, id]);
   const champ = useSelector((state) => state.details);
+
+  function handleDelete(e){
+    e.preventDefault();
+    dispatch(deleteChamp(id))
+    alert("Champ was eliminated!");
+    navigate("/");
+  }
   return (
     <div>
       <Header />
@@ -45,8 +53,10 @@ export default function ChampDetails() {
           <div>
             {champ[0]?.createdByMe ? (
               <div>
+                <Link to={`/update/${id}`}>
                 <button>Edit</button>
-                <button>Delete</button>
+                </Link>
+                <button onClick={handleDelete}>Delete</button>
               </div>
             ) : (
               <div></div>

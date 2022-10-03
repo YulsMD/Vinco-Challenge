@@ -1,7 +1,7 @@
 const axios = require("axios");
 const express = require("express");
 const router = express.Router();
-const { Champ, Tags } = require("../db.js");
+const { Champ } = require("../db.js");
 const { getAllChamps, getChampDetails, getChampDetails_DB } = require("./controller/index.js");
 
 
@@ -18,13 +18,11 @@ router.get("/", async (req, res, next) => {
 /* A route that is going to get the details of a champ from the database. */
 router.get('/:id', async (req, res, next) => {
   const {id} = req.params
-  console.log(isNaN(id))
   try {
     if(isNaN(id)=== true){
       let champDetail = await getChampDetails(id)
       res.status(200).json(champDetail);
     } else{
-      console.log('estamos')
       let champDetailDB = await getChampDetails_DB(id)
       res.status(200).json(champDetailDB);
     }
@@ -62,7 +60,7 @@ router.put("/update/:id", async (req, res, next) =>{
   const id = req.params.id;
   try {
     const champ = await Champ.findOne({where: {id:id}});
-    champ.blurb = req.body.blurb
+    champ.lore = req.body.lore
     await champ.save()
     res.json("update")
     

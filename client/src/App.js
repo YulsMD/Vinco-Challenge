@@ -5,6 +5,7 @@ import Home from './components/home/Home';
 import Header from './components/header/Header';
 import ChampDetails from './components/details/ChampDetails';
 import CreateChamp from './components/createChamp/CreateChamp';
+import EditChamp from './components/editChamp/EditChamp';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Route path="/" element={<Header />}></Route>
       <Route exact path = '/champs/:id' element={<ChampDetails/>}></Route>
       <Route exact path = '/create' element={<CreateChamp/>}></Route>
+      <Route exact path = '/update/:id' element={<EditChamp/>}></Route>
       </Routes>
     </React.Fragment>
     

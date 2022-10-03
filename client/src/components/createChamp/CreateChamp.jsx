@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
 import { createNewChamp, getAllChamps } from "../../redux/actions";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 /**
  * Create a new champ using one handle for changes, other for tags, and one submit for to post the champ.
@@ -18,7 +18,7 @@ export default function CreateChamp() {
     dispatch(getAllChamps());
   }, [dispatch]);
   const tags = useSelector((state) => state.tags);
-  const onlyTags = tags.filter(e => e !=='All')
+  const onlyTags = tags.filter((e) => e !== "All");
   const [input, setInput] = useState({
     name: "",
     title: "",
@@ -38,31 +38,28 @@ export default function CreateChamp() {
     if (input.tags === "") setInput({ ...input, tags: [] });
     if (Object.values(input.tags).includes(e.target.value)) {
       alert("Duplicate temperament");
-    } else if(input.tags.length<2){
-        setInput({
-          ...input,
-          tags: [...input.tags, e.target.value],
-        });
-    }
-    else {
-      alert('Only two tags')
+    } else if (input.tags.length < 2) {
+      setInput({
+        ...input,
+        tags: [...input.tags, e.target.value],
+      });
+    } else {
+      alert("Only two tags");
     }
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(createNewChamp(input))
+    dispatch(createNewChamp(input));
     alert("Champ was created succesfully!");
-      setInput({
-        name: "",
-        description: "",
-        image: "",
-        released: "",
-        rating: "",
-        genres: [],
-        platforms: [],
-      });
-      navigate("/");
+    setInput({
+      name: "",
+      title: "",
+      lore: "",
+      tags: [],
+      image: "",
+    });
+    navigate("/");
   }
 
   return (
@@ -98,6 +95,7 @@ export default function CreateChamp() {
                 name="lore"
                 placeholder="Describe your champ..."
                 onChange={handleChange}
+                className="text__area"
               ></textarea>
             </div>
             <div className="data__input">
@@ -122,10 +120,8 @@ export default function CreateChamp() {
               </select>
             </div>
             <div>
-                  <button type="submit">
-                    CREATE
-                  </button>
-                </div>
+              <button type="submit">CREATE</button>
+            </div>
           </form>
         </div>
       </div>

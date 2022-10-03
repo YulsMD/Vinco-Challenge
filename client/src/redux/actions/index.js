@@ -62,3 +62,23 @@ export const createNewChamp = (payload) => {
       console.log(error)
     }}
 }
+
+export const updateChamp = (payload) => {
+  return async function (dispatch) {
+    try {
+        const res = await axios.put(`http://localhost:3001/champs/update/${payload.id}`, payload)
+        return res
+    } catch (error) {
+      console.log(error)
+    }}
+}
+
+export const deleteChamp = (id) => {
+  return async function (dispatch) {
+    try {
+        const res = await axios.delete(`http://localhost:3001/champs/delete/${id}`)
+        return res
+    } catch (error) {
+      console.log(error)
+    }}
+}
