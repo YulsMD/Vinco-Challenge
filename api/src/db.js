@@ -6,7 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const sequelize = new Sequelize({
     dialect: 'sqlite',
-    host: '../../champs.sqlite'
+    host: './champs.sqlite'
   });
 
   /* Reading the files in the models folder and pushing them into an array. */
@@ -25,6 +25,6 @@ const sequelize = new Sequelize({
   sequelize.models = Object.fromEntries(capsEntries);
 
   module.exports = {
-    ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
-    conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
+    ...sequelize.models, 
+    conn: sequelize,     
   };

@@ -2,32 +2,22 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
     // Define the model
-    sequelize.define('champ', {
+    sequelize.define('user', {
       name: {
         type: DataTypes.STRING,
         allowNull: false
       },
-      title: {
+      email: {
         type: DataTypes.STRING,
         allowNull: false
       },
-      lore: {
-        type: DataTypes.STRING
-      },
-      tags: {
+      password: {
         type: DataTypes.STRING,
-        allowNull:false
-      },
-      image : {
-        type: DataTypes.STRING
-      },
-      createdByMe: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: true
+        allowNull: false
       }
     },
     {
-      timestamps: false 
+      timestamps: false
     });
   };
   

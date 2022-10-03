@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Header from "../header/Header";
-import { deleteChamp, getChampDetails } from "../../redux/actions";
+import { clearState, deleteChamp, getChampDetails } from "../../redux/actions";
 import "./champDetails.css";
 
 /**
@@ -22,6 +22,7 @@ export default function ChampDetails() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    dispatch(clearState());
     dispatch(getChampDetails(id));
   }, [dispatch, id]);
   const champ = useSelector((state) => state.details);

@@ -52,6 +52,14 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         details: action.payload
       }
+
+      /* Clearing the details state. */
+      case 'CLEAR_STATE':
+        return{
+          ...state,
+          details:[]
+        }
+
     default:
       return { ...state };
   }

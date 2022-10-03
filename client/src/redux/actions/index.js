@@ -63,6 +63,9 @@ export const createNewChamp = (payload) => {
     }}
 }
 
+/**
+ * It takes a payload, and then it makes a PUT request to the server.
+ */
 export const updateChamp = (payload) => {
   return async function (dispatch) {
     try {
@@ -73,6 +76,12 @@ export const updateChamp = (payload) => {
     }}
 }
 
+/**
+ * It's an async function that takes an id as an argument, and returns a function that takes a dispatch
+ * as an argument. 
+ * 
+ * The response object is the result of an axios delete request to the server. 
+ */
 export const deleteChamp = (id) => {
   return async function (dispatch) {
     try {
@@ -81,4 +90,14 @@ export const deleteChamp = (id) => {
     } catch (error) {
       console.log(error)
     }}
+}
+
+/**
+ * It returns an object with a type property of 'CLEAR_STATE'
+ */
+export function clearState(){
+  return{
+    type: 'CLEAR_STATE'
+  }
+
 }
