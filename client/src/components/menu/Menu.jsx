@@ -26,7 +26,7 @@ export default function Menu() {
             </li>
           ))}
         </ul>
-        <Link to={'/create'}>
+        <Link className="create__champ" to={'/create'}>
         <div>Create champ</div>
         </Link>
       </nav>
