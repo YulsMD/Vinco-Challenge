@@ -22,6 +22,7 @@ const rootReducer = (state = initialState, action) => {
           ),
         ],
       };
+      
 
     /* Filtering the champions based on the tags. */
     case "FILTER_CHAMPS":
